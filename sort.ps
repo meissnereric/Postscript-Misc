@@ -1,0 +1,32 @@
+% Be sure to DOCUMENT the operator especially inputs
+% and outputs.
+/sort {
+	1 dict begin
+	1 count eq
+	{}
+	{
+		/n exch def
+		sort
+		n myinsert
+	} 
+	ifelse
+	end
+} def
+
+/myinsert {
+	1 dict begin
+	/x exch def
+
+	1 count eq
+	{x}
+	{
+		/top exch def
+		x top ge
+			{top x}
+			{x myinsert
+			 top
+			}
+		ifelse
+	} ifelse
+	end
+} def

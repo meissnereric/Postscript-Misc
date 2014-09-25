@@ -1,0 +1,30 @@
+/fractal{
+	1 dict begin
+	/i exch def
+	i 0 eq 
+	{}
+	{
+		0 0 moveto
+		130 130 lineto 
+		130 130 translate
+		.7 .7 scale
+		gsave
+			-30 rotate
+			i 1 sub fractal
+			stroke
+		grestore
+		gsave
+			50 rotate
+			i 1 sub fractal
+			stroke
+		grestore
+		gsave
+			-10 rotate
+			i 1 sub fractal
+			stroke
+		grestore 
+		stroke
+	}
+	ifelse
+	end
+} def

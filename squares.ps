@@ -1,0 +1,25 @@
+/squares {
+	1 dict begin
+	/n exch def
+	n 0 eq 
+		{}
+		{
+			n 2 mod 0 eq
+				{.5 .5 .5 setrgbcolor}
+				{0 0 0 setrgbcolor}
+			ifelse	
+	
+			newpath
+				n 50 mul 50 moveto % starts in the top right corner
+				0 -50 rlineto
+				-50 0 rlineto
+				0 50 rlineto
+				50 0 rlineto
+			closepath
+			fill
+			stroke
+	
+			n 1 sub squares % recurse to the next one, n-1 
+		}
+	ifelse
+} def

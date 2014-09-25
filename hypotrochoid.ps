@@ -1,0 +1,65 @@
+% Be sure to DOCUMENT the operator especially inputs
+% and outputs.
+
+%Draws a hypotrochoid 
+/hypotrochoid {
+	1 dict begin
+	/r exch def
+	/d exch def
+	/b exch def
+	/a exch def
+
+	%Move the pen to the first point
+	a b d r 0 x_t
+	a b d r 0 y_t
+	moveto
+	
+	%For loop to draw a line for each degree
+	1
+	1
+	360 r mul	
+	{
+		1 dict begin
+		/t exch def
+		t
+		%Push the next x and y position onto the stack
+		a b d r t x_t
+		a b d r t y_t
+		lineto
+		end
+	}
+	for
+	end
+} def
+
+%calculates x(t)
+/x_t {
+	5 dict begin
+	/t exch def
+	/r exch def
+	/d exch def
+	/b exch def
+	/a exch def
+
+	/left a b sub t cos mul def
+	/right a b sub t mul b div cos d mul def
+	
+	left right add
+	end
+} def
+
+%Calculates y(t)
+/y_t {
+	5 dict begin
+	/t exch def
+	/r exch def
+	/d exch def
+	/b exch def
+	/a exch def
+
+	/left a b sub t sin mul def
+	/right a b sub t mul b div sin d mul def
+	
+	left right sub
+	end
+} def
